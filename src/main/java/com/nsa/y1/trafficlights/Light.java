@@ -51,6 +51,8 @@ public class Light {
     }
 
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -78,9 +80,9 @@ public class Light {
     @Override
     public String toString() {
         return "Light{" +
-                "theShape=" + theShape +
-                ", theColour=" + theColour +
-                ", isOn=" + isOn +
+                "Shape = " + theShape +
+                ", Colour = " + theColour +
+                ", On = " + isOn +
                 '}';
     }
 }
