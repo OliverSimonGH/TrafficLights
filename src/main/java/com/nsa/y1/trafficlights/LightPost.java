@@ -37,27 +37,33 @@ public class LightPost{
         greenLight.turnOff();
         amberLight.turnOff();
         redLight.turnOff();
-        if (leftArrow != null) leftArrow.turnOff();
-        else if (rightArrow != null)  rightArrow.turnOff();
-        else if (upArrow != null)  upArrow.turnOff();
+        turnArrowsOn(false);
     }
 
     public void goGreen(){
         greenLight.turnOn();
         amberLight.turnOff();
         redLight.turnOff();
-        if (leftArrow != null) leftArrow.turnOn();
-        else if (rightArrow != null)  rightArrow.turnOn();
-        else if (upArrow != null)  upArrow.turnOn();
+        turnArrowsOn(true);
     }
 
     public void goAmber(){
         greenLight.turnOff();
         amberLight.turnOn();
         redLight.turnOff();
-        if (leftArrow != null) leftArrow.turnOff();
-        else if (leftArrow != null)  rightArrow.turnOff();
-        else if (upArrow != null)  upArrow.turnOff();
+        turnArrowsOn(false);
+    }
+
+    private void turnArrowsOn(Boolean val) {
+        if(val == false){
+            if (leftArrow != null) leftArrow.turnOff();
+            else if (leftArrow != null)  rightArrow.turnOff();
+            else if (upArrow != null)  upArrow.turnOff();
+        } else {
+            if (leftArrow != null) leftArrow.turnOn();
+            else if (leftArrow != null)  rightArrow.turnOn();
+            else if (upArrow != null)  upArrow.turnOn();
+        }
     }
 
     public void goStop(){
