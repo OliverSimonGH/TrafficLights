@@ -5,7 +5,7 @@ import java.util.TimerTask;
 /**
  * Created by c1633899 on 16/02/2017.
  */
-public class LightPost extends Light {
+public class LightPost{
 
     private Light greenLight;
     private Light amberLight;
@@ -13,16 +13,17 @@ public class LightPost extends Light {
     private Light leftArrow;
     private Light rightArrow;
     private Light upArrow;
-    private long seconds = 0;
-    private boolean increment = true;
+    private String name;
 
-    public LightPost() {
+    public LightPost(String name) {
+        this.name = name;
         this.greenLight = new Light(Shape.CIRCLE, Colour.GREEN);
         this.amberLight = new Light(Shape.CIRCLE, Colour.AMBER);
         this.redLight = new Light(Shape.CIRCLE, Colour.RED);
     }
 
-    public LightPost(Shape shape) {
+    public LightPost(String name, Shape shape) {
+        this.name = name;
         this.greenLight = new Light(Shape.CIRCLE, Colour.GREEN);
         this.amberLight = new Light(Shape.CIRCLE, Colour.AMBER);
         this.redLight = new Light(Shape.CIRCLE, Colour.RED);
@@ -32,72 +33,66 @@ public class LightPost extends Light {
         if (shape == Shape.UP_ARROW) this.upArrow = new Light(Shape.UP_ARROW, Colour.GREEN);
     }
 
-    Timer timer = new Timer();
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            cycleThroughLights();
-            System.out.println(seconds);
-        }
-    };
-    public void start(){
-        timer.scheduleAtFixedRate(task, 1000, 1000);
-    }
-
-    public void stop() { timer.cancel(); timer.purge(); seconds = 0;}
-
-    public void cycleThroughLights() {
-        if (increment) seconds++;
-        if (!increment) seconds--;
-        if (seconds == 0) increment = true;
-        if (seconds >= 0 && seconds <= 21) {
-            greenLight.turnOn();
-            if(rightArrow != null) rightArrow.turnOn();
-            else if(leftArrow != null) leftArrow.turnOn();
-            else if(upArrow != null) upArrow.turnOn();
-        }
-        else if (seconds >= 22 && seconds <= 26) {
-            amberLight.turnOn();
-            if (seconds == 24){
-                greenLight.turnOff();
-                redLight.turnOff();
-                if(rightArrow != null) rightArrow.turnOff();
-                else if(leftArrow != null) leftArrow.turnOff();
-                else if(upArrow != null) upArrow.turnOff();
-            }
-        }
-        else if (seconds >= 27 && seconds <= 45) {
-            amberLight.turnOff();
-            redLight.turnOn();
-        } else {
-            increment = false;
-        }
-    }
-
     public void turnLightsOff(){
         greenLight.turnOff();
         amberLight.turnOff();
         redLight.turnOff();
-        upArrow.turnOff();
-        rightArrow.turnOff();
-        leftArrow.turnOff();
+        if (leftArrow != null) leftArrow.turnOff();
+        else if (rightArrow != null)  rightArrow.turnOff();
+        else if (upArrow != null)  upArrow.turnOff();
+    }
+
+    public void goGreen(){
+        greenLight.turnOn();
+        amberLight.turnOff();
+        redLight.turnOff();
+        if (leftArrow != null) leftArrow.turnOn();
+        else if (rightArrow != null)  rightArrow.turnOn();
+        else if (upArrow != null)  upArrow.turnOn();
+    }
+
+    public void goAmber(){
+        greenLight.turnOff();
+        amberLight.turnOn();
+        redLight.turnOff();
+        if (leftArrow != null) leftArrow.turnOff();
+        else if (leftArrow != null)  rightArrow.turnOff();
+        else if (upArrow != null)  upArrow.turnOff();
+    }
+
+    public void goStop(){
+        redLight.turnOn();
     }
 
     @Override
     public String toString() {
-        return "LightPost{" +
-                "\ngreenLight=" + greenLight +
-                "\namberLight=" + amberLight +
-                "\nredLight=" + redLight +
-                "\nleftArrow=" + leftArrow +
-                "| rightArrow=" + rightArrow +
-                "| upArrow=" + upArrow +
-                '}';
-    }
-
-    public static void main(String[] args) {
-        LightPost l = new LightPost();
-        l.start();
+        if (upArrow != null){
+            return name +
+                    "\ngreenLight=" + greenLight +
+                    "\namberLight=" + amberLight +
+                    "\nredLight=" + redLight +
+                    "\nupArrow=" + upArrow +
+                    '}';
+        } else if (rightArrow != null){
+            return name +
+                    "\ngreenLight=" + greenLight +
+                    "\namberLight=" + amberLight +
+                    "\nredLight=" + redLight +
+                    "\nrightArrow=" + rightArrow +
+                    '}';
+        } else if (leftArrow != null){
+            return name +
+                    "\ngreenLight=" + greenLight +
+                    "\namberLight=" + amberLight +
+                    "\nredLight=" + redLight +
+                    "\nleftArrow=" + leftArrow +
+                    '}';
+        } else {
+            return name +
+                    "\ngreenLight=" + greenLight +
+                    "\namberLight=" + amberLight +
+                    "\nredLight=" + redLight;
+        }
     }
 
     public Light getGreenLight() {
@@ -122,13 +117,5 @@ public class LightPost extends Light {
 
     public Light getUpArrow() {
         return upArrow;
-    }
-
-    public long getSeconds() {
-        return seconds;
-    }
-
-    public void setSeconds(long seconds) {
-        this.seconds = seconds;
     }
 }
