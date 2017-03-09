@@ -79,10 +79,8 @@ public class Light {
 
     @Override
     public String toString() {
-        return "Light{" +
-                "Shape = " + theShape +
-                ", Colour = " + theColour +
-                ", On = " + isOn +
-                '}';
+        return "Shape: " + theShape +
+                ", Colour: " + theColour +
+                ", On: " + isOn;
     }
 }

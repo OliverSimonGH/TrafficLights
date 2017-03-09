@@ -40,64 +40,62 @@ public class LightPost{
         turnArrowsOn(false);
     }
 
-    public void goGreen(){
+    public void start(){
         greenLight.turnOn();
         amberLight.turnOff();
         redLight.turnOff();
         turnArrowsOn(true);
     }
 
-    public void goAmber(){
+    public void getReadyToGo(){
         greenLight.turnOff();
         amberLight.turnOn();
         redLight.turnOff();
         turnArrowsOn(false);
     }
 
+    public void stop(){
+        amberLight.turnOff();
+        redLight.turnOn();
+    }
+
     private void turnArrowsOn(Boolean val) {
         if(val == false){
             if (leftArrow != null) leftArrow.turnOff();
-            else if (leftArrow != null)  rightArrow.turnOff();
+            else if (rightArrow != null)  rightArrow.turnOff();
             else if (upArrow != null)  upArrow.turnOff();
         } else {
             if (leftArrow != null) leftArrow.turnOn();
-            else if (leftArrow != null)  rightArrow.turnOn();
+            else if (rightArrow != null)  rightArrow.turnOn();
             else if (upArrow != null)  upArrow.turnOn();
         }
-    }
-
-    public void goStop(){
-        redLight.turnOn();
     }
 
     @Override
     public String toString() {
         if (upArrow != null){
             return name +
-                    "\ngreenLight=" + greenLight +
-                    "\namberLight=" + amberLight +
-                    "\nredLight=" + redLight +
-                    "\nupArrow=" + upArrow +
-                    '}';
+                    "\n" + redLight +
+                    "\n" + amberLight +
+                    "\n" + greenLight +
+                    "\n" + upArrow;
         } else if (rightArrow != null){
             return name +
-                    "\ngreenLight=" + greenLight +
-                    "\namberLight=" + amberLight +
-                    "\nredLight=" + redLight +
-                    "\nrightArrow=" + rightArrow +
-                    '}';
+                    "\n" + redLight +
+                    "\n" + amberLight +
+                    "\n" + greenLight +
+                    "\n" + rightArrow;
         } else if (leftArrow != null){
             return name +
-                    "\ngreenLight=" + greenLight +
-                    "\namberLight=" + amberLight +
-                    "\nredLight=" + redLight +
-                    "\nleftArrow=" + leftArrow +
-                    '}';
+                    "\n" + redLight +
+                    "\n" + amberLight +
+                    "\n" + greenLight +
+                    "\n" + leftArrow;
         } else {
             return name +
-                    "\ngreenLight=" + greenLight +
-                    "\namberLight=" + amberLight +
-                    "\nredLight=" + redLight;
+                    "\n" + redLight +
+                    "\n" + amberLight +
+                    "\n" + greenLight;
         }
     }
 
@@ -124,4 +122,6 @@ public class LightPost{
     public Light getUpArrow() {
         return upArrow;
     }
+
+
 }
