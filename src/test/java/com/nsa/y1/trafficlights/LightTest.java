@@ -37,6 +37,6 @@ public class LightTest {
 
     @Test
     public void toStringIsCorrect() {
-        assertEquals("Light{theShape=CIRCLE, theColour=AMBER, isOn=false}", amberCircleLight.toString());
+        assertEquals("Shape: CIRCLE, Colour: AMBER, On: false", amberCircleLight.toString());
     }
 }

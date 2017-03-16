@@ -1,7 +1,7 @@
 package com.nsa.y1.trafficlights;
 
 public class Application {
-
+    
     public static void main(String[] args) {
         Flow flowOne = new Flow("South East Direction, North LightPost", new LightPost("LightPostOne", Shape.LEFT_ARROW));
         Flow flowTwo = new Flow("North West Direction", new LightPost("LightPostTwo"));

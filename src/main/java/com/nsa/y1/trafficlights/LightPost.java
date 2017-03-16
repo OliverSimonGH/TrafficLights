@@ -19,7 +19,7 @@ public class LightPost{
         this.name = name;
         this.greenLight = new Light(Shape.CIRCLE, Colour.GREEN);
         this.amberLight = new Light(Shape.CIRCLE, Colour.AMBER);
-        this.redLight = new Light(Shape.CIRCLE, Colour.RED);
+        this.redLight = new Light(Shape.CIRCLE, Colour.RED); //Correct
     }
 
     public LightPost(String name, Shape shape) {

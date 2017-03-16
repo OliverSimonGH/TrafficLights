@@ -16,7 +16,7 @@ public class PhaseTest {
         Phase phaseOne = new Phase(1, flowOne, flowTwo, 20);
         phaseOne.setTimerSeconds(2);
         phaseOne.start();
-        Thread.sleep(1);
+        Thread.sleep(25);
         assertEquals(phaseOne.toString(), "phaseNum: 1  |  Seconds to run: 20\n" +
                 "flowOne: name: 'South East Direction, North LightPost', lightPost: LightPostOne\n" +
                 "Shape: CIRCLE, Colour: RED, On: false\n" +
@@ -37,7 +37,7 @@ public class PhaseTest {
         Phase phaseOne = new Phase(1, flowOne, flowTwo, 20);
         phaseOne.setTimerSeconds(10);
         phaseOne.start();
-        Thread.sleep(1);
+        Thread.sleep(25);
         assertEquals(phaseOne.toString(), "phaseNum: 1  |  Seconds to run: 20\n" +
                 "flowOne: name: 'South East Direction, North LightPost', lightPost: LightPostOne\n" +
                 "Shape: CIRCLE, Colour: RED, On: false\n" +
@@ -58,7 +58,7 @@ public class PhaseTest {
         Phase phaseOne = new Phase(1, flowOne, flowTwo, 20);
         phaseOne.setTimerSeconds(16);
         phaseOne.start();
-        Thread.sleep(1);
+        Thread.sleep(25);
         assertEquals(phaseOne.toString(), "phaseNum: 1  |  Seconds to run: 20\n" +
                 "flowOne: name: 'South East Direction, North LightPost', lightPost: LightPostOne\n" +
                 "Shape: CIRCLE, Colour: RED, On: true\n" +
